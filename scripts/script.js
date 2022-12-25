@@ -42,17 +42,21 @@ function dealDeck(deck) {
 }
 
 function flip(card, cardName) {
-  clickCounts++;
-  card.parentNode.classList.add("clicked");
-  pairs.push({ card: card.parentNode, cardName });
-  if (pairs.length === 2) {
-    comparePairs();
+  if (canClick) {
+    clickCounts++;
+    card.parentNode.classList.add("clicked");
+    pairs.push({ card: card.parentNode, cardName });
+    if (pairs.length === 2) {
+      canClick = false;
+      comparePairs();
+    }
   }
 }
 
 function computerFlip() {
-  for (const pair in pairs) pair.card.classList.remove("clicked");
+  for (const pair of pairs) pair.card.classList.remove("clicked");
   pairs = [];
+  canClick = true;
 }
 
 function comparePairs() {
@@ -63,14 +67,17 @@ function comparePairs() {
       game_over();
     } else {
       pairs = [];
+      canClick = true;
     }
   }
 }
 
 function game_over() {
   clearInterval(interval);
-  alert(`Você ganhou em ${clickCounts} jogadas e ${time} segundos!`);
-  if (promptNewGame()) play();
+  setTimeout(() => {
+    alert(`Você ganhou em ${clickCounts} jogadas e ${time} segundos!`);
+    if (promptNewGame()) play();
+  }, 500);
 }
 
 function promptNewGame() {
@@ -83,12 +90,14 @@ function promptNewGame() {
 function play() {
   pairsCount = 0;
   clickCounts = 0;
+  time = 0;
+  canClick = true;
   pairs = [];
+
   numberCards = getNumberCards();
   deck = getDeck(numberCards / 2);
-  console.log(deck);
   dealDeck(deck);
-  time = 0;
+
   timer.innerHTML = "0";
 
   interval = setInterval(() => (timer.innerHTML = (++time).toString()), 1000);
@@ -108,6 +117,7 @@ const PARROTS = [
 
 const main = document.querySelector("main");
 const timer = document.querySelector(".timer");
+
 let numberCards;
 let deck;
 let pairs;
@@ -115,4 +125,6 @@ let pairsCount;
 let clickCounts;
 let interval;
 let time;
+let canClick;
+
 play();
