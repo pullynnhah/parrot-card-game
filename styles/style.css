@@ -1,1 +1,99 @@
 @import url("https://fonts.googleapis.com/css2?family=Chivo+Mono:wght@700&family=Roboto:wght@700&display=swap");
+
+body {
+  background: #eef9bf;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+
+header {
+  width: fit-content;
+  margin: 40px auto;
+}
+
+h1 {
+  color: #75b79e;
+  font-size: 56px;
+  line-height: 66px;
+  text-transform: uppercase;
+  letter-spacing: -0.004em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.timer {
+  color: #ff5e24;
+  font: 700 30px/36px "Chivo", monospace;
+  text-align: right;
+}
+
+main {
+  width: 80vw;
+  max-width: 872px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+  margin: 0 auto;
+}
+
+.card {
+  width: 117px;
+  height: 146px;
+  position: relative;
+  cursor: pointer;
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  background: #a7e9af;
+  border: 1px solid #99cea8;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+  transform-style: preserve-3d;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.card.clicked .front-face {
+  transform: rotateY(0deg);
+}
+
+.card.clicked .back-face {
+  transform: rotateY(-180deg);
+}
+
+img {
+  width: 100px;
+  height: 100px;
+}
+
+@media (max-width: 600px) {
+  header {
+    width: 238px;
+  }
+
+  h1 {
+    font-size: 36px;
+    line-height: 42px;
+    text-align: center;
+    letter-spacing: -0.004em;
+  }
+
+  .timer {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}

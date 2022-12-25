@@ -16,9 +16,14 @@ function isNumberCardsValid(numberCards) {
   return numberCards % 2 === 0;
 }
 
+function dealCards(numberCards) {
+
+}
+
 function game() {
   const gameData = {
     numberCards: getNumberCards(),
+    deck: 
     time: 0,
   };
 }
