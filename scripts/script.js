@@ -10,6 +10,7 @@ function getNumberCards() {
 }
 
 function isNumberCardsValid(numberCards) {
+  if (isNaN(numberCards)) return false;
   if (numberCards < MIN_CARDS) return false;
   if (numberCards > MAX_CARDS) return false;
   return numberCards % 2 === 0;
