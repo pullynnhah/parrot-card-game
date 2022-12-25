@@ -1,12 +1,12 @@
 function getNumberCards() {
   const input = `Com quantas cartas deseja jogar?\nNúmero PAR entre [${MIN_CARDS} - ${MAX_CARDS}]`;
-  const numberCards = Number(prompt(input));
+  const number = Number(prompt(input));
 
-  if (!isNumberCardsValid(numberCards)) {
-    getNumberCards();
+  if (!isNumberCardsValid(number)) {
+    return getNumberCards();
   }
 
-  return numberCards;
+  return number;
 }
 
 function isNumberCardsValid(numberCards) {
