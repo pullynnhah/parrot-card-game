@@ -15,8 +15,23 @@ function isDeckSizeValid(size, min, max) {
   return size % 2 === 0;
 }
 
+function getDeck(size) {
+  const deck = [];
+  PARROTS.slice(0, size / 2).forEach(parrot => {
+    deck.push(parrot);
+    deck.push(parrot);
+  });
+
+  return deck.sort(() => Math.random() - 0.5);
+}
+
+function game() {
+  const deckSize = 6; // TODO: call getDeckSize();
+  getDeck(deckSize);
+}
+
 const PARROTS = ["quad", "imposter", "tiedye", "christmas", "darkmode", "twins", "brazilianplayer"];
 const MIN_CARDS = 4;
 const MAX_CARDS = 14;
 
-getDeckSize();
+game();
