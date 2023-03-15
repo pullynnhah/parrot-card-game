@@ -30,7 +30,7 @@ function renderDeck(deck) {
   deck.forEach(card => {
     // TODO: add onclick to li
     cardsEl.innerHTML += /*html*/ `
-    <li class="card">
+    <li class="card" onclick="flipCard(this)">
       <div class="front-face face">
         <img src="./assets/parrot.png" alt="parrot" />
       </div>
@@ -40,6 +40,10 @@ function renderDeck(deck) {
     </li>
     `;
   });
+}
+
+function flipCard(card) {
+  card.classList.toggle("flipped");
 }
 
 function game() {
