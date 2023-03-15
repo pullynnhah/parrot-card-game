@@ -3,4 +3,13 @@
     font-size: 56px;
     line-height: 66px;
   }
+
+  main {
+    max-width: 1023px;
+    margin: 0 auto 100px;
+  }
+
+  .cards {
+    width: 100%;
+  }
 }

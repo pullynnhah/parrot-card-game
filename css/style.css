@@ -19,3 +19,52 @@ h1 {
   text-transform: uppercase;
   text-align: center;
 }
+
+.cards {
+  width: 80%;
+  margin: 0 auto 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 34px;
+}
+
+.card {
+  width: 117px;
+  height: 146px;
+  position: relative;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  background: #a7e9af;
+  border: 1px solid #99cea8;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all 500ms;
+  transform-style: preserve-3d;
+}
+
+.back-face {
+  transform: rotateY(180deg);
+}
+
+.card.clicked:not(.locked) .back-face {
+  transform: rotateY(0deg);
+}
+
+.card.clicked:not(.locked) .front-face {
+  transform: rotateY(-180deg);
+}
