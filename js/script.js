@@ -56,6 +56,12 @@ function userFlip(card, cardName) {
   }
 }
 
+function isClickAvailable(card, pairCount) {
+  if (pairCount === 2) return false;
+  if (card.classList.contains("locked")) return false;
+  return !card.classList.contains("flipped");
+}
+
 function validatePlay() {
   if (currentPair[0].cardName !== currentPair[1].cardName) {
     setTimeout(() => {
@@ -71,21 +77,34 @@ function validatePlay() {
 }
 
 function gameOver() {
-  clearInterval();
+  clearInterval(interval);
+  setTimeout(() => {
+    alert(`Você ganhou em ${clickCount} jogadas e ${timer} segundos!`);
+    if (getReplay()) game();
+  }, 500);
 }
 
-function isClickAvailable(card, pairCount) {
-  if (pairCount === 2) return false;
-  if (card.classList.contains("locked")) return false;
-  return !card.classList.contains("flipped");
+function getReplay() {
+  while (true) {
+    const replay = prompt("Deseja reiniciar o jogo?\n[sim]/[não]");
+    if (replay === "sim") return true;
+    if (replay === "não") return false;
+  }
 }
 
 function game() {
-  deckSize = 6; // TODO: call getDeckSize();
-  const deck = getDeck(deckSize);
+  deckSize = 4; // TODO: call getDeckSize();
   currentPair = [];
   pairsCount = 0;
   clickCount = 0;
+  timer = 0;
+
+  timerEl.innerText = `${timer}`;
+  interval = setInterval(() => {
+    timerEl.innerText = `${++timer}`;
+  }, 1000);
+
+  const deck = getDeck(deckSize);
   renderDeck(deck);
 }
 
@@ -104,4 +123,5 @@ let pairsCount;
 let clickCount;
 let currentPair;
 let interval;
+
 game();
