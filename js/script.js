@@ -28,9 +28,8 @@ function getDeck(size) {
 function renderDeck(deck) {
   cardsEl.innerHTML = "";
   deck.forEach(card => {
-    // TODO: add onclick to li
     cardsEl.innerHTML += /*html*/ `
-    <li class="card" onclick="flipCard(this)">
+    <li class="card" onclick="userFlip(this, '${card}')">
       <div class="front-face face">
         <img src="./assets/parrot.png" alt="parrot" />
       </div>
@@ -46,9 +45,47 @@ function flipCard(card) {
   card.classList.toggle("flipped");
 }
 
+function userFlip(card, cardName) {
+  if (isClickAvailable(card, currentPair.length)) {
+    clickCount++;
+    card.classList.add("flipped");
+    currentPair.push({ card, cardName });
+    if (currentPair.length === 2) {
+      validatePlay(currentPair);
+    }
+  }
+}
+
+function validatePlay() {
+  if (currentPair[0].cardName !== currentPair[1].cardName) {
+    setTimeout(() => {
+      currentPair[0].card.classList.remove("flipped");
+      currentPair[1].card.classList.remove("flipped");
+      currentPair = [];
+    }, 1000);
+  } else if (++pairsCount === deckSize / 2) {
+    gameOver();
+  } else {
+    currentPair = [];
+  }
+}
+
+function gameOver() {
+  clearInterval();
+}
+
+function isClickAvailable(card, pairCount) {
+  if (pairCount === 2) return false;
+  if (card.classList.contains("locked")) return false;
+  return !card.classList.contains("flipped");
+}
+
 function game() {
-  const deckSize = 6; // TODO: call getDeckSize();
+  deckSize = 6; // TODO: call getDeckSize();
   const deck = getDeck(deckSize);
+  currentPair = [];
+  pairsCount = 0;
+  clickCount = 0;
   renderDeck(deck);
 }
 
@@ -61,4 +98,10 @@ const MAX_CARDS = 14;
 const cardsEl = document.querySelector(".cards");
 const timerEl = document.querySelector(".timer");
 
+// game variables
+let deckSize;
+let pairsCount;
+let clickCount;
+let currentPair;
+let interval;
 game();

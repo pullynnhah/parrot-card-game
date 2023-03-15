@@ -70,10 +70,10 @@ main {
   transform: rotateY(180deg);
 }
 
-.card.flipped:not(.locked) .back-face {
+.card.flipped .back-face {
   transform: rotateY(0deg);
 }
 
-.card.flipped:not(.locked) .front-face {
+.card.flipped .front-face {
   transform: rotateY(-180deg);
 }
