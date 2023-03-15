@@ -9,6 +9,12 @@ function getDeckSize() {
   return size;
 }
 
+function isDeckSizeValid(size, min, max) {
+  if (isNaN(size)) return false;
+  if (min > size || max < size) return false;
+  return size % 2 === 0;
+}
+
 const PARROTS = ["quad", "imposter", "tiedye", "christmas", "darkmode", "twins", "brazilianplayer"];
 const MIN_CARDS = 4;
 const MAX_CARDS = 14;
