@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Sigmar+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Roboto:wght@700&display=swap");
 
 body {
   background: #eef9bf;
@@ -20,9 +20,21 @@ h1 {
   text-align: center;
 }
 
-.cards {
+main {
   width: 80%;
   margin: 0 auto 50px;
+}
+
+.timer {
+  width: fit-content;
+  border-radius: 5px;
+  margin: 0 0 15px auto;
+
+  color: #f9561b;
+  font: 400 36px/40px "Lilita One", cursive;
+}
+
+.cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
