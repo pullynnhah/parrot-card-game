@@ -25,13 +25,36 @@ function getDeck(size) {
   return deck.sort(() => Math.random() - 0.5);
 }
 
-function game() {
-  const deckSize = 6; // TODO: call getDeckSize();
-  getDeck(deckSize);
+function renderDeck(deck) {
+  cardsEl.innerHTML = "";
+  deck.forEach(card => {
+    // TODO: add onclick to li
+    cardsEl.innerHTML += /*html*/ `
+    <li class="card">
+      <div class="front-face face">
+        <img src="./assets/parrot.png" alt="parrot" />
+      </div>
+      <div class="back-face face">
+        <img src="./assets/parrots/${card}parrot.gif" alt="${card} parrot" />
+      </div>
+    </li>
+    `;
+  });
 }
 
+function game() {
+  const deckSize = 6; // TODO: call getDeckSize();
+  const deck = getDeck(deckSize);
+  renderDeck(deck);
+}
+
+// constants
 const PARROTS = ["quad", "imposter", "tiedye", "christmas", "darkmode", "twins", "brazilianplayer"];
 const MIN_CARDS = 4;
 const MAX_CARDS = 14;
+
+// html elements
+const cardsEl = document.querySelector(".cards");
+const timerEl = document.querySelector(".timer");
 
 game();
