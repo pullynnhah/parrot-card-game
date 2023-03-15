@@ -9,6 +9,10 @@
     margin: 0 auto 100px;
   }
 
+  .timer {
+    font-size: 36px;
+    line-height: 40px;
+  }
   .cards {
     width: 100%;
   }

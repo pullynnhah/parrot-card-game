@@ -26,12 +26,9 @@ main {
 }
 
 .timer {
-  width: fit-content;
-  border-radius: 5px;
-  margin: 0 0 15px auto;
-
+  text-align: right;
   color: #f9561b;
-  font: 400 36px/40px "Lilita One", cursive;
+  font: 400 30px/36px "Lilita One", cursive;
 }
 
 .cards {
