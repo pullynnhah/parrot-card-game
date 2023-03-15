@@ -93,7 +93,7 @@ function getReplay() {
 }
 
 function game() {
-  deckSize = 4; // TODO: call getDeckSize();
+  deckSize = getDeckSize();
   currentPair = [];
   pairsCount = 0;
   clickCount = 0;
