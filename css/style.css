@@ -3,3 +3,19 @@
 body {
   background: #eef9bf;
 }
+
+header {
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  width: 80%;
+  color: #75b79e;
+  font: 700 36px/42px "Roboto", sans-serif;
+  letter-spacing: -0.004em;
+  text-transform: uppercase;
+  text-align: center;
+}
